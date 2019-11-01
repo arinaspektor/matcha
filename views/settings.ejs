@@ -1,0 +1,112 @@
+<%include components/header%>
+
+	<div class="row">
+		<div class="col-sm-12 col-md-6 col-lg-6">
+			<h3>User information</h3>
+			<form action="/profile/edit" method="POST" autocomplete="on">
+				<div class="form-row align-items-center">
+					<div class="col">
+						<input required aria-describedby="basic-addon1" class="form-control" type="email" name="email" placeholder="email" value="<%=user.email%>" autocomplete="on" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$" title="Please enter a valid email address">
+					</div>
+					<div class="col">
+						<input required aria-describedby="basic-addon1" type="text" class="form-control" name="username" placeholder="username" value="<%=user.username%>" autocomplete="on" minlength="3" maxlength="20">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col">
+						<input required aria-describedby="basic-addon1" type="text" class="form-control" name="firstname" placeholder="firstname" value="<%=user.firstname%>" autocomplete="on" pattern="^[a-zA-Z]{2,50}$" title="Your first name should be 2-50 characters long and can contain only letters">
+					</div>
+					<div class="col">
+						<input required aria-describedby="basic-addon1" type="text" class="form-control" name="lastname" placeholder="lastname" value="<%=user.lastname%>" autocomplete="on" pattern="^[a-zA-Z]{2,50}$" title="Your last name should be 2-50 characters long and can contain only letters">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col input-group">
+							<input type="number" class="form-control" min="14" max="100" name="age" placeholder="age" value="<%=user.age%>" required>
+							<div class="input-group-append">
+							  <span class="input-group-text">y. o.</span>
+							</div>
+					</div>
+					<div class="col">
+							<input aria-describedby="basic-addon1" class="form-control " type="text" name="location"
+								value="<%= user.locationname %>" placeholder="City" required>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col">
+						<span class="input-group-addon" id="basic-addon1">Gender</span>
+						<select aria-describedby="basic-addon1" class="form-control " name="gender">
+							<option <% if (user.gender === "female") { %> selected <% } %> value="female">female</option>
+							<option <% if (user.gender === "male") { %> selected <% } %> value="male">male</option>
+						</select>
+					</div>
+					<div class="col">
+							<span class="input-group-addon" id="basic-addon1">Sex Preferences</span>
+							<select aria-describedby="basic-addon1" class="form-control " name="sexPreferences">
+								<option <% if (user.sexPreferences == "female") { %> selected <% } %> value="female">female
+								</option>
+								<option <% if (user.sexPreferences == "male") { %> selected <% } %> value="male">male</option>
+								<option <% if (user.sexPreferences == "bisexual") { %> selected <% } %> value="bisexual">
+									bisexual
+								</option>
+							</select>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col">
+							<textarea class="form-control" type="text" name="bio" placeholder="Your Bio"
+							pattern="^[A-Za-z0-9 .'?!,@$#-_\n\r]{5,300}$"
+							title="Please make sure there's 5-300 characters in your bio and it doesn't containt symbols apart from '.'?!,@$#-_' " maxlength="300"><%= user.bio %></textarea>
+					</div>
+				</div>
+				<button class="btn bg-dark btn-block" type="submit">Submit</button>
+			</form>
+			 <hr/>
+			<% if (!user.intra_id) { %>
+				<form action="/profile/forgot" method="GET">
+					<div class="form-group">
+							<button class="btn bg-dark btn-block">Change password</button>
+					</div>
+				</form>
+			<% } %>
+
+			<h3>Interests</h3>
+			<div>
+				<% user.interests.forEach((tag) => { %>
+					<a class="btn btn-success mb-2" href="/profile/interests/<%=tag._id%>/delete">#<%= tag.text %></a>
+				<% }); %>
+			</div>
+			<form action="/profile/interests/add" method="POST">
+				<div class="form-group input-group mb-3 dropup">
+					<div class="input-group-prepend">
+    					<span class="input-group-text" id="basic-addon1">New</span>
+  					</div>
+                    <input id="dropdownInput" autocomplete="off" aria-describedby="basic-addon1" class="form-control" 
+                    type="text" name="interest" placeholder="interest" onkeyup="autoSuggest(this.value)" 
+                    pattern="^[A-Za-z0-9]{2,30}$" title="Please make sure that you've entered only alphanumericals">
+
+                    <ul id="interest-suggestions">
+                    </ul>
+
+					<div class="input-group-append">
+							<button class="btn bg-dark btn-block">Add</button>
+  					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="col-sm-12 col-md-6 col-lg-6">
+			<div class="container">
+				<h3>Photos</h3>
+				
+					<%include components/carousel%>
+				
+
+					<%include components/uploadform%>
+			</div>
+		</div>
+	</div>
+
+<%include components/footer%>
+
+<script>getInterestsList();</script>

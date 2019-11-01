@@ -1,0 +1,25 @@
+<%include components/header%>
+
+<div class="container form-container">
+	<div>
+		<h1 class="w-100 mb-4">Reset your password!</h1>
+		<form action="/reset/<%=token%>" method="post">
+			<div class="form-group input-group">
+				<input required aria-describedby="basic-addon1" class="form-control" type="password" name="password" value=""
+					placeholder="New Password" pattern="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$"
+					title="Your password should be at least 6 symbols long and contain letters and numbers">
+			</div>
+			<div class="form-group input-group">
+				<input required class="form-control" type="password" name="confirmedPassword" autocomplete="off" value=""
+					placeholder="Confirm Password" pattern="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$"
+					title="Your password should be at least 6 symbols long and contain letters and numbers">
+			</div>
+			<div class="form-group">
+				<button aria-describedby="basic-addon1" class="btn bg-dark btn-block text-uppercase" type="submit">Update
+					Password</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<%include components/footer%>

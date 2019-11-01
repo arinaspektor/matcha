@@ -1,0 +1,12 @@
+
+<form action="/profile/upload" method="POST" enctype="multipart/form-data">
+    <div class="input-group my-2">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="image-upload" name="photo" accept="image/png, image/jpeg, image/jpg" aria-describedby="image-upload" onchange="btnToggle();">
+            <label class="custom-file-label" for="image-upload">Choose file</label>
+        </div>
+        <div class="input-group-append my-auto">
+            <button type="submit" class="btn btn-outline-secondary bg-dark " id="picture-upload-button" disabled>Upload</button>
+        </div>
+    </div>
+</form>

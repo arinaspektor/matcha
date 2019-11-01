@@ -1,0 +1,66 @@
+
+<form id="filter" class="row" onsubmit="handleFilter(event, this)">
+    <div class="form-row align-items-center bg-light mb-2">
+
+        <div class="col-6 col-sm-4 col-md-4 col-lg-2 my-1">
+            <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-dark">age</span>
+                </div>
+                <input type="number" value="" class="form-control" name="agemin"
+                        id="agemin">
+                <input type="number" value="" class="form-control" name="agemax"
+                        id="agemax">
+            </div>
+        </div>
+
+        <div class="col-6 col-sm-4 col-md-4 col-lg-3 my-1">
+            <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                        <span class="input-group-text bg-dark">km</span>
+                </div>
+                    <input type="number" value="" class="form-control" name="distancemin" 
+                        id="distancemin">
+                    <input type="number" value="" class="form-control" name="distancemax"
+                        id="distancemax">
+            </div>
+        </div>
+
+        <div class="col-6 col-sm-4 col-md-4 col-lg-2 my-1">
+            <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-dark">rate</span>
+                </div>
+                <input type="number" value="" class="form-control" name="famemin"
+                     id="famemin">
+                <input type="number" value="" class="form-control" name="famemax"
+                    id="famemax">
+            </div>
+        </div>
+
+        <div class="col-6 col-sm-4 col-md-4 col-lg-3 my-1">
+            <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-dark">common tags</span>
+                </div>
+                <input type="number" value="" class="form-control" name="tagmin" 
+                    id="tagmin">
+                <input type="number" value="" class="form-control" name="tagmax"
+                     id="tagmax">
+            </div>
+        </div>
+
+        <div class="col-6 col-sm-4 col-md-4 col-lg-1 ml-auto">
+            <div class="input-group">
+                <input class="btn w-100 bg-dark text-uppercase text-left" value="Filter" type="submit">
+            </div>
+        </div>
+        
+        <div class="col-6 col-sm-4 col-md-4 col-lg-1 ml-auto">
+            <div class="input-group">
+                <button class="btn w-100 bg-dark text-uppercase text-left" onclick="resetFilter(event)">Reset</button>
+            </div>
+        </div>
+
+    </div>
+</form>

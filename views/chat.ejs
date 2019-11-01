@@ -1,0 +1,30 @@
+<% include components/header %>
+
+<div class="d-flex flex-column align-items-center">
+	<h1 class="mb-4">Chats</h1>
+
+	<% chats.map((chat) => {%>
+		<div class="d-flex align-items-center mb-3 chat-thumbnail">
+			<img src="<%=(chat.members[0].pictures[0].src || '/images/default.png')%>" alt="">
+
+			<div class="d-inline-flex flex-column justify-content-end pl-2">
+				<a class="text-decoration-none text-monospace" href="/profile/view/<%=chat.members[0].username%>"><%=chat.members[0].username%></a>
+
+				<a class="text-decoration-none" href="/chat/private/<%=chat._id%>">
+					<p class="text-muted mb-0">
+						<%if (chat.lastMessage) {%>
+							<% if (chat.lastMessage.author.toString() === currentUser._id.toString()) {%>you: <%}%>
+							<%=chat.lastMessage.body.substring(0, 20) + '...'%>
+						<%} else {%>
+							New match. Start conversation...
+						<%}%>
+					</p>
+				</a>
+			</div>
+		</div>
+	<%});%>
+
+</div>
+
+
+<% include components/footer %>

@@ -1,0 +1,44 @@
+
+<script>
+
+        window.onload = () => { getAllNotifications(); };
+        
+        const room = "<%=currentUser._id%>";
+    
+        socket.emit('create', room);
+       
+        socket.on('recieve new notification', (notification) => {
+            treatNotification(notification);
+        });
+
+</script>
+
+<ul class="navbar-nav mr-auto">
+    <li class="nav-itemn">
+        <a class="nav-link " href="/feed/browse">Feed</a>
+    </li>
+</ul>
+
+<ul class="navbar-nav navbar-right">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=currentUser.username%></a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/profile">Profile</a>
+            <a class="dropdown-item" href="/chat/all">Chat</a>
+            <a class="dropdown-item" href="/profile/edit">Settings</a>
+        </div>
+    </li>
+
+    <li class="nav-item dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+        ><img src='/images/notification.svg' height="25" alt="signout"/><span id="notifications-badge" class="badge ml-1">0</span></a>
+        <div id="notifications" class="dropdown-menu" >
+            <a class="dropdown-item text-center" href="#">Nothing new</a>
+        </div>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="/signout"><img src='/images/logout.svg' width="17" alt="signout"/></a>
+    </li>
+  
+</ul>

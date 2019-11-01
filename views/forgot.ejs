@@ -1,0 +1,18 @@
+<% include components/header %>
+
+
+<div class="container form-container">
+	<div>
+		<h1 class="w-100 mb-4">Reset Password</h1>
+		<form action="/forgot" method="post">
+			<div class="form-group input-group">
+				<input required placeholder="email" aria-describedby="basic-addon1" class="form-control" type="email" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
+			</div>
+			<div class="form-group">
+				<button class="btn bg-dark btn-block text-uppercase py-2" type="submit">Submit</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<% include components/footer %>

@@ -1,0 +1,280 @@
+body {
+    background: rgba(248, 236, 242, 0.7);
+    color: black;
+    min-width: 320px;
+    min-height: 420px;
+}
+
+.container {
+    min-width: 320px;
+}
+
+a {
+    color: black;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+.bg-dark,
+nav .dropdown-menu  {
+    background: rgba(0, 0, 0, 0.9) !important;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+.dropdown-item {
+    color:rgba(255, 255, 255, 0.8);
+}
+
+.bg-dark:hover {
+    color: white;
+}
+
+.bg-intra {
+    background: #00babc;
+    color:rgba(255, 255, 255, 0.9);
+}
+
+.bg-white {
+    background: white;
+    color: black;
+}
+
+.navbar-dark
+.navbar-nav
+.nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: lighter;
+    font-size: 0.95em;
+}
+
+main {
+    margin-top: 4rem;
+    margin-bottom: 3.5rem;
+    padding-top: 2%;
+}
+
+footer > div {
+    margin-right: 20px;
+    text-align: right;
+    font-size: 0.8em;
+    font-weight: lighter;
+}
+
+.form-container {
+    padding: 2em 2em 3em;
+    max-width: 550px;
+    background: white;
+}
+
+.form-container h1 {
+    font-size: 1.6em;
+    width: 15%;
+    text-transform: uppercase;
+}
+ 
+.signin-form h1 {
+    margin-bottom: 1em;
+}
+
+.alert {
+    top: 3.4rem;
+    text-align: center;
+}
+
+.form-row {
+    margin-bottom: 1.2em;
+}
+
+.carousel-item img {
+    height: calc(27.5em + .75rem);
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+
+.profile {
+    background: white;
+}
+
+.profile i {
+    font-size: 1.2em;
+}
+
+.profile h2 {
+    font-size: 1.5em;
+}
+
+#dropdownInput {
+    position: relative;
+}
+
+#interest-suggestions {
+    display: none;
+    position: absolute;
+    width: calc(100% - 7em + 2px);
+    background: white;
+    list-style: none;
+    bottom: 100%;
+    left: 3.5em;
+    margin: 0;
+    padding: 5px 1em;
+    color: #495057;
+    border: 1px solid #ced4da;
+    border-bottom: none;
+    border-radius: 3px;
+}
+
+.dropdownItem:hover {
+    cursor: pointer;
+}
+
+.report > a.dropdown-item {
+    color: red;
+    text-align: right;
+}
+
+.img-container div {
+    width: 320px;
+    background: white;
+}
+
+.img-container img {
+    height: 320px;
+    width: 320px;
+    object-fit: cover;
+}
+
+.history-thumbnail {
+    width: 250px;
+}
+
+.chat-thumbnail {
+    width: 300px;
+}
+
+.history-thumbnail img,
+.chat-thumbnail img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.history-thumbnail div p,
+.history-thumbnail div span,
+.chat-thumbnail div p {
+    font-size: 0.8em;
+}
+
+.chat-thumbnail div p  {
+    letter-spacing: 0.05em;
+}
+
+#messages {
+    display: flex;
+    flex-direction: column;
+    padding: 1em 2em;
+    height: calc(100vh - 8.2rem - 124px);
+    overflow-y: auto;
+}
+
+.message:nth-child(2) {
+    margin-top: auto;
+}
+
+#messages .message {
+    max-width: 80%;
+    padding: 0.5em 1em;
+    border-radius: 20px;
+}
+
+.message span {
+    font-size: 0.9em;
+}
+
+.sent {
+    margin-left: auto !important;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.recieved {
+    margin-right: auto !important;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#messages::-webkit-scrollbar {
+    display: none;
+}
+
+#notifications {
+    left: -200px;
+    width: 250px;
+    font-size: 0.9em;
+}
+
+#notifications .dropdown-item {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#notifications .dropdown-item:hover {
+    color: white;
+    cursor: pointer;
+}
+
+#notifications .dropdown-item a {
+    color: white;
+}
+
+.alert {
+    position: fixed;
+    top: 3.7rem;
+    left: 0;
+    right: 0;
+}
+
+#sort .btn,
+#filter .btn {
+    border-radius: 0;;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+#filter span,
+#filter input,
+#filter button,
+#search input,
+#search button,
+#search span {
+    font-size: 0.8em;
+}
+
+#sort,
+#sort .btn {
+    font-size: 0.9em;
+}
+
+#filter span,
+#search span {
+    font-weight: lighter;
+}
+
+
+#search .input-group-prepend,
+#search .input-group-prepend span {
+    width: 80px;
+}
+
+#toggle-mode {
+    text-align: right;
+    font-size: 1.5em;
+    position: fixed;
+    width: 60px;
+    left: -5px;
+    bottom: 3.3rem;
+}

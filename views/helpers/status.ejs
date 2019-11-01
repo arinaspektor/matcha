@@ -1,0 +1,15 @@
+<script>
+    const userId = "<%=user._id%>";
+    const lastseen = "<%=interval(user.lastseen).fromNow()%>";
+    const statusContainer = document.querySelector('.show-status');
+
+    const showStatus = (data) => {
+        if (userId) {
+            const online = data.onlineUsersList.includes(userId);
+            statusContainer.innerText = online ? 'online' : ( data.lastseen ? data.lastseen : lastseen);                           
+        }
+    }
+
+    socket.on('status', showStatus); 
+   
+</script>

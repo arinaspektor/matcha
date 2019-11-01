@@ -1,0 +1,68 @@
+<div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Search form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="searchform" class="mb-3" onsubmit="fetchUsersCustom(event, this)" method="POST">
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-dark">age</span>
+                            </div>
+                            <input type="number" name="minage" value="16" placeholder="min" class="form-control">
+                            <input type="number" name="maxage" value="100" placeholder="max" class="form-control">
+                        </div>
+                
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text bg-dark">km</span>
+                            </div>
+                                <input type="number" name="mindistance" value="" placeholder="min" class="form-control">
+                                <input type="number" name="maxdistance" value="" placeholder="max" class="form-control"> 
+                        </div>
+                
+                
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-dark">rate</span>
+                            </div>
+                            <input type="number" value="" name="minrate"  placeholder="min" class="form-control">
+                            <input type="number" value=""  name="maxrate" placeholder="max" class="form-control">
+                        </div>
+
+                        <button type="submit" class="btn btn-block bg-dark w-100 mt-1">Find</button>
+                    
+                </form>
+
+                <form id="findByInterest" onsubmit="fetchUsersByInterest(event, this)"  method="POST">
+                    <div class="form-group input-group mb-3 dropup">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-dark" id="basic-addon1">#</span>
+                          </div>
+                        <input id="dropdownInput" autocomplete="off" aria-describedby="basic-addon1" class="form-control" 
+                        type="text" name="interest" placeholder="interest" value=""  onkeyup="autoSuggest(this.value)"
+                        pattern="^[A-Za-z0-9]{2,30}$" title="Please make sure that you've entered only alphanumericals">
+    
+                        <ul id="interest-suggestions">
+                        </ul>
+    
+                        <div class="input-group-append">
+                                <input class="btn bg-dark btn-block" value="Find" type="submit">
+                        </div>
+                    </div>
+                </form>    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    
+<script>
+    getInterestsList();
+</script>

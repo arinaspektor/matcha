@@ -1,0 +1,24 @@
+<% include components/header %>
+
+<% const headling = type === 'visits'
+                    ? "Visit's history"
+                    : "Likes's history";
+%>
+
+<div class="d-flex flex-column align-items-center">
+    <h1 class="mb-4"><%=headling%></h1>
+
+    <% users.map((user) => {%>
+        <div class="d-flex align-items-center mb-3 history-thumbnail">
+            <img src="<%=(user.picture || '/images/default.png')%>" alt="">
+            <div class="d-inline-flex flex-column justify-content-end pl-2">
+                <a class="text-monospace" href="/profile/view/<%=user.username%>"><%=user.username%></a>
+                <% if (user.age > 0) {%>
+                    <p class="text-muted m-0"><%=user.age%> years old</p>
+                <%}%>
+            </div>
+        </div>
+    <%});%>
+</div>
+
+<% include components/footer %>

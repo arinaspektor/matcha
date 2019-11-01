@@ -1,0 +1,72 @@
+<% include components/header %>
+
+<%
+   const user = chat.members[0];
+   const ava = user.pictures.find(pic => pic.isProfile);
+%>
+
+    <div class="row bg-white w-100 m-0">
+        <div class="d-flex align-items-center history-thumbnail py-2 px-4">
+                <img src="<%=(ava .src || '/images/default.png')%>" alt="">
+                <div class="d-inline-flex flex-column ml-3">
+                    <a class="text-monospace" href="/profile/view/<%=user.username%>"><%=user.username%></a>
+                    <span class="show-status text-muted"></span>
+                </div>
+        </div>
+    </div>
+
+    <div id="messages" class="m-0">
+        <div class="message mb-2" style="display: none;">
+            <span class="text-break"></span>
+        </div>
+
+        <% data.forEach(o => { %>
+                <div class="<%=o.author.toString() !== user._id.toString() ? 'sent' : 'recieved'%> message mb-2">
+                    <span class="text-break"><%=o.body%></span>
+                </div>
+        <%});%>
+    
+    </div>
+
+    <div class="row m-0 w-100">
+        <form id="new-message" class="w-100">
+            <div class="input-group">
+                <input type="text" class="form-control text-break" placeholder="New message..." aria-label="new message" aria-describedby="add-new-message" maxlength="300">
+                <div class="input-group-append">
+                    <button id="send" class="btn bg-dark" type="button" onclick="sendMessage('<%=chat._id%>')">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        scrollToEnd();
+
+        const   chatSocket = io.connect('http://localhost:3000/chat',  {transports: ['websocket']});
+
+        const chat = "<%=chat._id%>";
+
+        document.querySelector('input').addEventListener('keypress', (e) => {
+            if (e.keyCode == 13 && e.target.value !== "") {
+                e.preventDefault();
+                sendMessage(chat);
+            }
+        })
+        
+        chatSocket.emit('join', chat);
+
+        chatSocket.on('recieve message', (message) => {
+            addMessage(message, false);
+        });
+
+        chatSocket.on('not active', () => {
+            displayAlert(false, 'This chatroom is not available anymore!');
+            document.querySelector('#send').onclick = '#';
+        })
+
+    </script>
+
+
+<% include helpers/status %>
+
+<% include components/footer %>
